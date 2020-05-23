@@ -11,7 +11,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import com.fasterxml.jackson.databind.ObjectReader;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NasaClient {
 
   private HttpURLConnection httpURLConnection;
@@ -29,7 +31,7 @@ public class NasaClient {
       StringBuffer responseContent = new StringBuffer();
       String returnContent = null;
 
-      URL url = new URL("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+ date +"&api_key=NfrPQX4Si6iL4xnbPv5TXHQTGwr7uPOcwXL7XrLh\n");
+      URL url = new URL("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+ date +"&api_key=rUczv4Aj5GSAgiJOdHOylN07IFNqd0xBdsPEK1oZ");
       httpURLConnection = (HttpURLConnection) url.openConnection();
       httpURLConnection.setRequestMethod("GET");
       httpURLConnection.setConnectTimeout(5000);
@@ -39,6 +41,7 @@ public class NasaClient {
       int status = httpURLConnection.getResponseCode();
 
       if (status > 299) {
+        System.out.println("ERROR");
         reader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
 
         while ((line = reader.readLine()) != null){
@@ -46,6 +49,7 @@ public class NasaClient {
         }
         reader.close();
       } else {
+        System.out.println("SUCCESS");
         reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
 
         while ((line = reader.readLine()) != null){

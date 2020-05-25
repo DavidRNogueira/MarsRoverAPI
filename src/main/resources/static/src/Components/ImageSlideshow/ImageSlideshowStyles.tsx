@@ -52,7 +52,8 @@ margin:0.5em;
 `
 
 export const BtnDiv = styled.div `
-align-self:center;
+align-self:flex-end;
+margin-bottom:2em;
 `
 
 export const NoImages = styled.div `
@@ -61,7 +62,14 @@ align-self:center;
 export const ImageDescriptionDiv = styled.div `
 display:flex;
 flex-direction:column;
+margin-top:2em;
+align-self:flex-end;
 `
 export const DescriptionLine = styled.p `
+margin:0;
+`
 
+export const DownloadMessage = styled.strong `
+margin:0.5em auto 0 auto;
+font-size:1.75em;
 `

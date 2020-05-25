@@ -23,7 +23,7 @@ public class NasaClient {
     objectReader = new ObjectMapper().readerFor(PhotosListDto.class);
   }
 
-  public PhotosListDto requestForImages (String date) {
+  public PhotosListDto requestForImages (final String date) {
 
     try {
       BufferedReader reader;
@@ -41,7 +41,6 @@ public class NasaClient {
       int status = httpURLConnection.getResponseCode();
 
       if (status > 299) {
-        System.out.println("ERROR");
         reader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
 
         while ((line = reader.readLine()) != null){
@@ -49,7 +48,6 @@ public class NasaClient {
         }
         reader.close();
       } else {
-        System.out.println("SUCCESS");
         reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
 
         while ((line = reader.readLine()) != null){

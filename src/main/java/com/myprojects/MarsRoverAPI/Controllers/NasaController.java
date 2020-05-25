@@ -18,7 +18,12 @@ public class NasaController {
   }
 
   @GetMapping("/get-images-by-date")
-  public List<PhotoDto> getImagesByDate (@RequestParam(name="date") String date) {
+  public List<PhotoDto> getImagesByDate (@RequestParam(name="date") final String date) {
     return nasaService.makeRequestForImages(date);
+  }
+
+  @GetMapping("/download-image")
+  public String downloadImage (@RequestParam(name="url") final String url){
+    return nasaService.downloadImageByUrl(url);
   }
 }

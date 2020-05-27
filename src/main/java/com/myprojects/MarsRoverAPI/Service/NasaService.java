@@ -38,10 +38,10 @@ public class NasaService {
     try {
       URL image = new URL(url);
       inputStream = image.openStream();
-      File downloads = new File(System.getProperty("user.home") +"/Downloads");
-      int count = downloads.list().length;
+      File tmp = new File("/tmp");
+      int count = tmp.list().length;
 
-      File file =  new File(downloads + "/MarsImage" + count + ".jpg");
+      File file =  new File(tmp + "/MarsImage" + count + ".jpg");
       outputStream = new FileOutputStream(file);
 
       byte[] buffer = new byte[2048];

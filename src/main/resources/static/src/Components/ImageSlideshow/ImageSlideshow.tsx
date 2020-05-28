@@ -9,7 +9,8 @@ import {
     NoImages,
     ImageDescriptionDiv,
     DescriptionLine,
-    DownloadMessage
+    DownloadMessage,
+    ImageDiv
  } from "./ImageSlideshowStyles";
 import { Context } from "../../App";
 import moment from "moment";
@@ -56,7 +57,9 @@ const ImageSlideshow:FC = ():JSX.Element => {
           <DescriptionLine>Date selected : {moment(context.state[activeImage].earth_date).format('MMMM Do YYYY')}</DescriptionLine>
         </ImageDescriptionDiv>
       </BtnDiv>
-      <SlideshowImg src={context.state[activeImage].img_src}/>
+      <ImageDiv>
+        <SlideshowImg src={context.state[activeImage].img_src}/>
+      </ImageDiv>
       <BtnDiv>
         <SlideshowBtn onClick={(event:React.MouseEvent<HTMLAnchorElement>) => {debounceImageDownload();}}>Download</SlideshowBtn>
       </BtnDiv>
@@ -85,8 +88,8 @@ const ImageSlideshow:FC = ():JSX.Element => {
         <ImageSlideshowMainDiv>
           <SlideshowBlackBackDrop>
               <SlideshowGreyBackDrop>
-                { images }
-                </SlideshowGreyBackDrop>
+                  { images }
+              </SlideshowGreyBackDrop>
             </SlideshowBlackBackDrop>
             {
             isImageDownloaded &&

@@ -7,7 +7,7 @@ margin-top:1em;
 `
 
 export const SlideshowBlackBackDrop = styled.div `
-width:70%;
+width:90%;
 height:70vh;
 background-color:black;
 margin:auto;
@@ -24,6 +24,14 @@ margin:auto;
 
 display:flex;
 justify-content:space-around;
+`
+
+export const ImageDiv = styled.div `
+width:700px;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center
 `
 
 export const SlideshowImg = styled.img `
